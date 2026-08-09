@@ -1,0 +1,26 @@
+{
+    "data": {
+        "problemsetQuestionList": {
+            "total": 958,
+            "question": [
+                {
+                    "difficulty": "Easy",
+                    "title": "Shortest Distance to Target String in a Circular Array",
+                    "titleSlug": "shortest-distance-to-target-string-in-a-circular-array",
+                    "topicTags": [
+                        {
+                            "name": "Array",
+                            "id": "VG9waWNUYWdOb2RlOjU=",
+                            "slug": "array"
+                        },
+                        {
+                            "name": "String",
+                            "id": "VG9waWNUYWdOb2RlOjEw",
+                            "slug": "string"
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}
