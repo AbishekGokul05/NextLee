@@ -1,5 +1,5 @@
 import requests
-from Config.constants import REQUEST_URL
+from app.Config.constants import REQUEST_URL
 
 def create_session():
     session = requests.Session()

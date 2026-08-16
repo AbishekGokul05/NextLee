@@ -1,11 +1,14 @@
 import sys
 from pathlib import Path
+from rich.console import Console
+from rich.table import Table
 
 sys.path.append((str(Path(__file__).resolve().parent.parent)))
 
-from Config.session import create_session
-from Config.constants import REQUEST_URL
-from Storage.cache import cache
+from app.Config.session import create_session
+from app.Config.constants import REQUEST_URL
+from app.Storage.cache import cache
+from app.Utils.title_slugs import get_slugs
 
 
 def get_total_problems_count():
@@ -31,7 +34,7 @@ def get_total_problems_count():
     cache.set(key="random_total",value=problem_count)
 
     return problem_count
-get_total_problems_count()
+
 def get_easy_problem_count():
     session = create_session()
 
@@ -126,3 +129,23 @@ def get_hard_problem_count():
         value=hard_problem_count
     )
     return hard_problem_count
+
+def get_title_slugs():
+
+    title_slugs = cache.get(key="title_slug")
+    if not title_slugs:
+        if not cache.get(key="random_total"):
+            get_total_problems_count()
+        title_slugs = get_slugs()
+
+
+    console = Console()
+    table = Table(title="Available Topics")
+
+    table.add_column("No.",style="cyan",justify="center")
+    table.add_column("Topic",style="white",justify="center")
+
+    for no,topic in enumerate(sorted(title_slugs),start=1):
+        table.add_row(str(no),topic)
+
+    console.print(table)
